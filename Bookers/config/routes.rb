@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'users#top'
+  get "users/top"=>"books#index"
   devise_for :users
   resources :books,only: [:new, :create, :index, :show, :destory]
   resources :users
