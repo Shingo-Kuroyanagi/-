@@ -1,0 +1,40 @@
+<div class="top">
+  
+  
+ <div class="container">
+   <div class ="row">
+    <div class = "col-lg-3">
+    <p>User info<p>
+    
+    <table class="table">
+      <tr>
+       <th>name</th>
+       <th></th>
+      </tr>
+      <tr>
+       <th>intoroduction</th>
+       <th></th>
+      </tr>
+    </table>
+
+<p>New book</p>
+
+<div>
+   <% if @book.errors.any? %>
+   <%=  @book.errors.count %> errors prohibited this book from being saved
+<ul>
+  <% @book.errors.full_messages.each do |message| %>
+   <li><%= message %></li>
+  <% end %>
+</ul>
+ <% end %>
+</div>
+
+<%=  form_with model: @book,local:true do |f| %>
+<p>Title</p>
+  <%= f.text_field :title %>
+<p>Opinion</p>
+  <%= f.text_area :body %>
+
+  <br><%= f.submit 'Create Book' %></br>
+<% end %>
