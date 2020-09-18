@@ -32,13 +32,13 @@
             <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
 	      	  	<% if user_signed_in? %>
 	      	  	  <li class="">
-                 <%= link_to 'Home', books_path %>
+                 <%= link_to 'Home',user_path(current_user.id)%>
                 </li>
                 <li class="">
-                 <%= link_to 'Users', "#"%>
+                 <%= link_to 'Users', users_path%>
                 </li>
                 <li class="">
-                 <%= link_to "Books","#"%>
+                 <%= link_to "Books",books_path%>
                 </li>
                 <li class="">
                  <%= link_to "Log out", destroy_user_session_path, method: :delete  %>
@@ -48,7 +48,7 @@
                   <%= link_to 'Home', "/" %>
                 </li>
                 <li class="">
-                  <%= link_to 'About', "#"%>
+                  <%= link_to 'About', "/books/about"%>
                 </li>
                 <li class="">
                   <%= link_to 'Sign up', new_user_registration_path %>
@@ -80,8 +80,8 @@
             </div>
           </div>
           <div class="col-md-2">
-            <div class="col">
-              <h4>CopyRight Infratop.inc</h4>
+            <div class="">
+              <p>CopyRight Infratop.inc</p>
             </div>
           </div>
         </div>
