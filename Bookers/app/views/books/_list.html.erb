@@ -13,9 +13,10 @@
       </tr>
       <tr>
        <th>introduction</th>
-       <th></th>
+       <th><%=current_user.introduction%></th>
       </tr>
      </table>
+       
         <%=link_to edit_user_path(@user), class: "btn btn-default btn-block" do%>
         <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
         <% end %>
