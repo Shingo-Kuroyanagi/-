@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     @book = Book.new
     @user = User.find(params[:id])
     @books=Book.all
+    @user = current_user
   end
   
   def upsate
