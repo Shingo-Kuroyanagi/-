@@ -1,1 +1,22 @@
-<h4>User info</h4>
+<div class="container">
+<h2>User info</h2>
+<%= form_with model:@user, local:true do |f| %>
+  <div class="">
+    <th>Name</th>
+    <%= f.text_field :name, autofocus: true, placeholder:"名前"%>
+    <span class="fa fa-user form-control-icon" aria-hidden="true"></span>
+  </div>
+  <div>
+    <p>Image</p>
+    <%= f.attachment_field :profile_image, placeholder: "ファイルを選択", class: "btn btn-default"%>
+  </div>
+  <div class="">
+    <th>Introduction</th>
+    <%= f.text_area :introduction, autofocus: true, placeholder:""%>
+    <span class="fa fa-user form-control-icon" aria-hidden="true"></span>
+  </div>
+  <div> 
+   <%= f.submit "Update User", class:"btn btn-default" %>
+  </div> 
+<% end %>
+</div>

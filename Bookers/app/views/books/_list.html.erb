@@ -5,7 +5,7 @@
     
     
     <p>User info<p>
-       <%= attachment_image_tag @user,:profile_image_id,:fill,100,100,format: 'jpeg',fallback: "no_image.jpg", size: '100x100'%>
+       <%= attachment_image_tag user,:profile_image_id,:fill,100,100,format: 'jpeg',fallback: "no_image.jpg", size: '100x100'%>
     <table class="table">
       <tr>
        <th>name</th>
@@ -17,7 +17,7 @@
       </tr>
      </table>
        
-        <%=link_to edit_user_path(@user), class: "btn btn-default btn-block" do%>
+        <%=link_to edit_user_path(user), class: "btn btn-default btn-block" do%>
         <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
         <% end %>
    

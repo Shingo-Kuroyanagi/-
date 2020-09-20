@@ -1,4 +1,4 @@
- <%= render 'books/list', book: @book %>
+  <%= render 'books/list', book: @book, user: @user %>
  
  <div class="notice"><%= notice%></div>
  <div class="col-lg-9">
@@ -15,7 +15,9 @@
  <tbody>
      <% @books.each do |book|%>
     <tr>
-     <td></td>
+     <td>
+       <%= attachment_image_tag @user,:profile_image_id,:fill,60,60,format: 'jpeg',fallback: "no_image.jpg", size: '60x60'%>
+     </td>
      <td>
   　   <%=book.title %>
      </td>

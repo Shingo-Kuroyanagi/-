@@ -4,21 +4,19 @@ class BooksController < ApplicationController
   def create
       @book = Book.new(book_params)
       @books.user_id = current_user.id
-   if @book.save  
+      @book.save  
       redirect_to book_path(@book.id)
-   else
-     @books = Book.all
-     render 'index'
-   end
   end
   
   def index
     @books = Book.all
+    @book = Book.new
+    @user = current_user
   end
 
-  def show
+  def show  
     @book = Book.find(params[:id])
-    @user = @book.users
+    @user = @book.user
   end
   
   def edit
@@ -28,7 +26,7 @@ class BooksController < ApplicationController
   def update
     book = Book.find(params[:id])
     book.update(book_params)
-    redirect_to user_url(current_user_id)
+    redirect_to user_path(@user)
   end
   
   def destory
