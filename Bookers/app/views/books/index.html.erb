@@ -1,3 +1,15 @@
+ <div>
+  <% if @book.errors.any? %>
+  <%=  @book.errors.count %> errors prohibited this book from being saved
+ <ul>
+  <% @book.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+ <% end %>
+ </ul>
+ <%end %>
+</div>
+ 
+ 
  <%= render 'books/list', book: @book, user: @user %>
    
  <div class="notice"><%= notice%></div>
@@ -17,6 +29,7 @@
   <tbody>
      <% @books.each do |book|%>
     <tr>
+       <%= link_to book_path(book.id) do %>
      <td>
        <%= attachment_image_tag @user,:profile_image_id,:fill,60,60,format: 'jpeg',fallback: "no_image.jpg", size: '60x60'%>
      </td>
@@ -25,10 +38,10 @@
      </td>
      <td>
   　   <%= book.body %>
-  　  
-　　 </td>
+  　  </td>
+    　<% end %>
     </tr>
-  　 <% end %>
+  　   <% end %>
     </tbody> 
   </table>
   </div>

@@ -7,14 +7,20 @@ class BooksController < ApplicationController
   end
 
   def show  
-    @book = Book.find(params[:id])
+    @book = Book.find_by(id:params[:id])
     @books = Book.all
+    @user = User.find_by(id:params[:id])
   end  
   
   def create
-      book = Book.new(book_params)
-      book.save  
-      redirect_to book_path(book.id), notice:"You have created book succesfully"
+      @user = current_user
+      @book = Book.new(book_params)
+      if @book.save  
+       redirect_to book_path(@book.id), notice:"You have created book succesfully"
+      else
+       @books=Book.all
+       render'index'
+      end
   end
   def edit
     @book = Book.find(params[:id])
@@ -29,7 +35,7 @@ class BooksController < ApplicationController
   def destory
     book = Book.find(params[:id])
     book.destroy
-    redirect_to books_path
+    redirect_to books_path,notice: "Book was succesfully destorted"
   end
 
 private
