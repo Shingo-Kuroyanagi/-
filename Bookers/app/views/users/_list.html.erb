@@ -1,0 +1,32 @@
+<div class="top">
+  <div class="container">
+   <div class ="row">
+    <div class = "col-lg-3">
+    
+    
+    <p>User info<p>
+       <%= attachment_image_tag user,:profile_image_id,:fill,100,100,format: 'jpeg',fallback: "no_image.jpg", size: '100x100'%>
+    <table class="table">
+      <tr>
+       <th>name</th>
+       <th><%=user.name%></th>
+      </tr>
+      <tr>
+       <th>introduction</th>
+       <th><%=user.introduction%></th>
+      </tr>
+     </table>
+       
+        <%=link_to edit_user_path(user), class: "btn btn-default btn-block" do%>
+        <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+        <% end %>
+   
+   <p>New book</p>
+     <%=  form_with model: book,local:true do |f| %> 
+   <p>Title</p>
+     <%= f.text_field :title %>
+   <p>Opinion</p>
+     <%= f.text_area :body %>
+   <br><%= f.submit 'Create Book' %></br>
+   <% end %>
+  </div>
