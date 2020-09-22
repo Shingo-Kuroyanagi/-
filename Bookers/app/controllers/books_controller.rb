@@ -1,45 +1,57 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!
   
+  def top
+  end
+  
+  def about
+  end
   def index
     @books = Book.all
     @book = Book.new
-    @user = current_user
   end
 
   def show  
-    @book = Book.find_by(id:params[:id])
-    @books = Book.all
-    @user = User.find_by(id:params[:id])
+    @book = Book.find(params[:id])
+    @user = @book.user
+    @book_new = Book.new
   end  
   
   def create
-      @user = current_user
       @book = Book.new(book_params)
+      @book.user_id = current_user.id
       if @book.save  
-       redirect_to book_path(@book.id), notice:"You have created book succesfully"
+       redirect_to book_path(@book), notice:"You have created book succesfully."
       else
-       @books=Book.all
-       render'index'
+       @books = Book.all
+       render 'index'
       end
   end
+  
   def edit
     @book = Book.find(params[:id])
   end
   
   def update
     @book = Book.find(params[:id])
-    @book.update(book_params)
-    redirect_to user_path(current_user)
+    if @book.update(book_params) 
+     redirect_to book_path(@book), notice:
+     "You have updated book succesfully"
+    else
+     @books = Book.all
+     render 'edit'
+    end
   end
   
-  def destory
-    book = Book.find(params[:id])
-    book.destroy
-    redirect_to books_path,notice: "Book was succesfully destorted"
+  def destroy
+    @book = Book.find(params[:id])
+    @book.destroy
+    redirect_to books_path,notice: 
+    "Book was succesfully destoryed"
   end
 
 private
   def book_params
-    params.require(:book).permit(:title, :body)
+    params.require(:book).permit(:title, :body, :user_id)
   end
 end

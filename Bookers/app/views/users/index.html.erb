@@ -1,5 +1,5 @@
-<%= render 'books/list', book: @book, user: @user %>
-<h4>Users</h4>
+<%= render 'books/list', book: @book, user: current_user%>
+<h2>Users</h2>
 <div class="notice"><%= notice%></div>
 
   <div class="col-lg-9">
@@ -13,21 +13,19 @@
   </thead>
 
   <tbody>
-    <% if @users.present?%>
-     <% @users.each do |book|%>
+     <% @users.each do |user|%>
     <tr>
      <td></td>
      <td>
-  　   <%= attachment_image_tag @user,:profile_image_id,:fill,60,60,format: 'jpeg',fallback: "no_image.jpg", size: '60x60'%>
+  　   <%= attachment_image_tag user,:profile_image_id,:fill,60,60,format: 'jpeg',fallback: "no_image.jpg", size: '60x60'%>
      </td>
      <td>
-  　   <%=@user.name %>
+  　   <%=user.name %>
      </td>
      <td>
-     <%= link_to 'show',user_path(current_user.id)%>
+     <%= link_to 'show',user_path(user.id)%>
 　　 </td>
     </tr>
-    <% end %>
   <% end %>
     </tbody> 
   </table>

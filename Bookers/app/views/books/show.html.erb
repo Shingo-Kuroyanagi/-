@@ -1,29 +1,32 @@
 
  
- <%= render 'users/list', book: @book, user: @user %>
+<%= render 'books/list', book: @book, user: current_user %>
 <div class="notice"><%= notice%></div>
-
+ <div class="col-lg-9">
 <h4>Book detail<h4>
 <table class="table table-hover">
  <tbody>
     <tr>
      <td>
-       <%= attachment_image_tag @user,:profile_image_id,:fill,60,60,format: 'jpeg',fallback: "no_image.jpg", size: '60x60'%>
+      <%= attachment_image_tag @book.user,:profile_image_id,:fill,60,60,format: 'jpeg',fallback: "no_image.jpg", size: '60x60'%>
+      <div><%= link_to @user.name ,user_path(@user.id) %>
      </td>
      <td>
-  　   <%=@book.title %>
+  　  <%= @book.title %>
      </td>
      <td>
   　   <%=@book.body %>
      </td>
-     <%if @user.id==current_user.id %>
+     <%if @book.user == current_user %>
      <td>
-      <%= link_to 'Edit',edit_book_path(book.id)%>
-      <%= link_to 'Destroy',book_path(book),method: :delete,"data-confirm" =>"本当に消しますか?" %>
+      <%= link_to 'Edit',edit_book_path(@book.id), class: "btn btn-success" %>
+      <%= link_to 'Destroy',book_path(@book.id),method: :delete,"data-confirm" =>"本当に消しますか?" ,class:"btn btn-danger"%>
       </td>
     </tr>
   　 <% end %>
   </tbody> 
 </table>
-
+ </div>
+ </div>
+</div>
  
