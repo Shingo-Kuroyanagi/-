@@ -1,6 +1,6 @@
 
  
-<%= render 'books/list', book: @book, user: current_user %>
+<%= render 'books/list', book: @book, user: @user %>
 <div class="notice"><%= notice%></div>
  <div class="col-lg-9">
 <h4>Book detail<h4>
@@ -9,7 +9,7 @@
     <tr>
      <td>
       <%= attachment_image_tag @book.user,:profile_image_id,:fill,60,60,format: 'jpeg',fallback: "no_image.jpg", size: '60x60'%>
-      <div><%= link_to @user.name ,user_path(@user.id) %>
+      <div><%= link_to @user.name ,user_path(@user.id) %></div>
      </td>
      <td>
   　  <%= @book.title %>

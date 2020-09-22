@@ -1,11 +1,8 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
   
-  def top
-  end
+ 
   
-  def about
-  end
   def index
     @books = Book.all
     @book = Book.new

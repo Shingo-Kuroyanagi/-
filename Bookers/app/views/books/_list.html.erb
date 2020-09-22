@@ -9,11 +9,11 @@
        <%= attachment_image_tag book.user,:profile_image_id,:fill,100,100,format: 'jpeg',fallback: "no_image.jpg", size: '100x100'%>
       <tr>
        <th>name</th>
-       <th><%= current_user.name %></th>
+       <th><%= user.name %></th>
       </tr>
       <tr>
        <th>introduction</th>
-       <th><%= current_user.introduction %></th>
+       <th><%= user.introduction %></th>
       </tr>
      </table>
        
