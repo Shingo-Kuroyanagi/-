@@ -2,7 +2,8 @@
 <h2>Users</h2>
 <div class="notice"><%= notice%></div>
 
-  <div class="col-lg-9">
+<div class="container">
+     <div class="col-xs-9">
      <table class="table table-hover">
   <thead>
    <tr>
@@ -15,7 +16,6 @@
   <tbody>
      <% @users.each do |user|%>
     <tr>
-     <td></td>
      <td>
   　   <%= attachment_image_tag user,:profile_image_id,:fill,60,60,format: 'jpeg',fallback: "no_image.jpg", size: '60x60'%>
      </td>
@@ -23,12 +23,11 @@
   　   <%=user.name %>
      </td>
      <td>
-     <%= link_to 'show',user_path(user.id)%>
+     <%= link_to 'Show',user_path(user.id)%>
 　　 </td>
     </tr>
   <% end %>
     </tbody> 
   </table>
-  </div>
  </div>
 </div>

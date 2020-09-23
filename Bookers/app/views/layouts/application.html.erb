@@ -14,69 +14,60 @@
 
   <body>
 
-    <div class="header" id="header">
-      <nav class="navbar navbar-main navbar-shadow" role="navigation" id="slide-nav">
-        <div class="container relative">
-          <div class="navbar-header">
-            <h3>Bookers</h3>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              
-            </button>
-          </div>
-          <div id="slidemenu">
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <nav class="navbar navbar-nav navbar-left">
+        <div class="container">
+            <font size="5" color="white">Bookers</font>
+          </nav>
+          <nav>
+           <div id="slidemenu">
             <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
+	      	  	<font color="#9d9d9d">
 	      	  	<% if user_signed_in? %>
-	      	  	  <span class="glyphicon glyphicon-home" aria-hidden="true">
-                 <%= link_to 'Home',user_path(current_user.id) %>
+	      	  	 <span class="glyphicon glyphicon-home">
+                 <%= link_to 'Home',user_path(current_user.id)%>
                 </span>
-                 <span class="glyphicon glyphicon-user" aria-hidden="true" >
+                 <span class="glyphicon glyphicon-user ">
                  <%= link_to 'Users', users_path%>
                 </span>
-                  <span class="glyphicon glyphicon-book" aria-hidden="true" >
+                  <span class="glyphicon glyphicon-book" >
                  <%= link_to "Books",books_path%>
                 </span>
-                  <span class="glyphicon glyphicon-log-out" aria-hidden="true" >
-                 <%= link_to "Log out", destroy_user_session_path, method: :delete  %>
+                  <span class="glyphicon glyphicon-log-out" >
+                 <%= link_to "logout", destroy_user_session_path, method: :delete  %>
                 </span>
               <% else %>
-                 <span class="glyphicon glyphicon-home" aria-hidden="true" >
+                 <span class="glyphicon glyphicon-home" >
                   <%= link_to 'Home', "/" %>
                 </span>
-                <span class="glyphicon glyphicon-link" aria-hidden="true">
+                <span class="glyphicon glyphicon-link" >
                   <%= link_to 'About', home_about_path %>
                 </span>
-                <span class="glyphicon glyphicon-edit" aria-hidden="true">
-                  <%= link_to 'Sign up', new_user_registration_path %>
+                <span class="glyphicon glyphicon-edit">
+                  <%= link_to 'sign up', new_user_registration_path %>
                 </span>
-                <span class="glyphicon glyphicon-log-in" aria-hidden="true">
-                  <%= link_to 'Login', new_user_session_path %>
+                <span class="glyphicon glyphicon-log-in" >
+                  <%= link_to 'login', new_user_session_path %>
                 </span>
                 <% end %>
+                </font>
             </ul>
+           </nav>      
           </div>
         </div>
       </nav>
-    </div>
-  
+    </header>
+    <main>
+    <div class="container"> 
     <%= yield %>
-
+    </div>
+    </main>  
+   
    <footer class="footer style-2">
       <div class="container">
         <div class="row">
-          <div class="col-md-9">
-            <div class="col">
-              <br>
-              <p class="no-margin" style="font-size: 11px;">
-              <br>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="">
+          <div class="col-xs-3 col-xs-offset-9">
               <p>CopyRight Infratop.inc</p>
-            </div>
           </div>
         </div>
       </div>

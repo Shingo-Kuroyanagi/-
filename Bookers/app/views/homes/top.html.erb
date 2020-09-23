@@ -1,4 +1,5 @@
     <div class="container">
+      <div class="notice"><%= notice%></div>
       <h1>Welcome to 
       <span class="glyphicon glyphicon-book"></span>
       <strong>Bookers!!</strong>
@@ -15,7 +16,7 @@
        about various books!
        </p>
       
-      <br>
-        <%= link_to "Sign up", new_user_registration_path, class: "btn btn-info btn-block"%>
-        <%= link_to "Log in", new_user_session_path, class: "btn btn-success btn-block"%>
-      </br>
+        <div class="btn-wrapper">
+         <%= link_to "Log in", new_user_session_path, class: "btn btn-info  col-xs-10 col-xs-offset-1"%>
+         <%= link_to "Sign up", new_user_registration_path, class: "btn btn-success col-xs-10 col-xs-offset-1"%>
+        </div>
