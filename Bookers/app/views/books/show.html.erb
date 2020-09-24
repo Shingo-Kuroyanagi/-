@@ -1,11 +1,11 @@
 
  
 <%= render 'books/list', book: @book, user: @user %>
-<div class="notice"><%= notice%></div>
  <div class="container">
   <div class="row">
      <div class="col-xs-9">
-<h4>Book detail<h4>
+<h2>Book detail</h2>
+
 <table class="table table-hover">
  <tbody>
     <tr>
@@ -14,15 +14,15 @@
       <div><%= link_to @user.name ,user_path(@user.id) %></div>
      </td>
      <td>
-  　  <%= @book.title %>
+  　  <%=@book_show.title %>
      </td>
      <td>
-  　   <%=@book.body %>
+  　   <%=@book_show.body %>
      </td>
-     <%if @book.user == current_user %>
+     <%if @book_show.user == current_user %>
      <td>
-      <%= link_to 'Edit',edit_book_path(@book.id), class: "btn btn-success" %>
-      <%= link_to 'Destroy',book_path(@book.id),method: :delete,"data-confirm" =>"本当に消しますか?" ,class:"btn btn-danger"%>
+      <%= link_to 'Edit',edit_book_path(@book_show.id), class: "btn btn-success" %>
+      <%= link_to 'Destroy',book_path(@book_show.id),method: :delete,"data-confirm" =>"本当に消しますか?" ,class:"btn btn-danger"%>
       </td>
     </tr>
   　 <% end %>

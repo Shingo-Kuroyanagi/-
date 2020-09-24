@@ -14,9 +14,9 @@
 
   <body>
 
-    <header class="navbar navbar-fixed-top navbar-inverse">
-      <nav class="navbar navbar-nav navbar-left">
+       <header class="navbar navbar-fixed-top navbar-inverse">
         <div class="container">
+          <nav class="navbar navbar-nav navbar-left">
             <font size="5" color="white">Bookers</font>
           </nav>
           <nav>
@@ -24,31 +24,31 @@
             <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
 	      	  	<font color="#9d9d9d">
 	      	  	<% if user_signed_in? %>
-	      	  	 <span class="glyphicon glyphicon-home">
+	      	  	 <li class="glyphicon glyphicon-home">
                  <%= link_to 'Home',user_path(current_user.id)%>
-                </span>
-                 <span class="glyphicon glyphicon-user ">
+                </li>
+                 <li class="glyphicon glyphicon-user ">
                  <%= link_to 'Users', users_path%>
-                </span>
+                </li>
                   <span class="glyphicon glyphicon-book" >
                  <%= link_to "Books",books_path%>
-                </span>
+                </li>
                   <span class="glyphicon glyphicon-log-out" >
                  <%= link_to "logout", destroy_user_session_path, method: :delete  %>
-                </span>
+                </li>
               <% else %>
                  <span class="glyphicon glyphicon-home" >
                   <%= link_to 'Home', "/" %>
-                </span>
-                <span class="glyphicon glyphicon-link" >
+                </li>
+                <li class="glyphicon glyphicon-link" >
                   <%= link_to 'About', home_about_path %>
-                </span>
-                <span class="glyphicon glyphicon-edit">
+                </li>
+                <li class="glyphicon glyphicon-edit">
                   <%= link_to 'sign up', new_user_registration_path %>
-                </span>
-                <span class="glyphicon glyphicon-log-in" >
+                </li>
+                <li class="glyphicon glyphicon-log-in" >
                   <%= link_to 'login', new_user_session_path %>
-                </span>
+                </li>
                 <% end %>
                 </font>
             </ul>
